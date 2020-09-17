@@ -24,6 +24,9 @@ jobs:
       - name: ping mysql 1
         run: echo $(mysqladmin -uroot -ppassword ping)
 
+      - name: mkdir
+        run: sudo mkdir -p /var/run/mysqld
+
       - name: touch
         run: sudo touch /var/run/mysqld/mysqld.sock
 
@@ -38,10 +41,11 @@ jobs:
       #
       - name: aaa
         run: wait 10
-      #      - name: check mysql 2
-      #        run: mysql -h127.0.0.1 -P3306 -uroot -ppassword -Dhuga -e"SELECT '1'"
-      #
+
       - name: ping mysql 3
         run: echo $(mysqladmin -uroot -ppassword ping)
+
+      - name: check mysql 2
+        run: mysql -h127.0.0.1 -P3306 -uroot -ppassword -Dhuga -e"SELECT '1'"
 
 
