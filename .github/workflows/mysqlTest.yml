@@ -22,7 +22,7 @@ jobs:
           mysql root password: 'password'
 
       - name: touch
-        run: sudo touch -c /tmp/mysql.sock
+        run: sudo touch /tmp/mysql.sock
 
       - name: chown
         run: sudo chown mysql:mysql /tmp/mysql.sock
