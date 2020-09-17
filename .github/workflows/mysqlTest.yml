@@ -21,17 +21,8 @@ jobs:
           mysql database: 'huga'
           mysql root password: 'password'
 
-      - name: wait
-        run: sleep 10
-
-      - name: ls 1
-        run: sudo ls /tmp
-
       - name: touch
-        run: sudo touch /tmp/mysql.sock
-
-      - name: ls 2
-        run: sudo ls -l /tmp
+        run: sudo touch -c /tmp/mysql.sock
 
       - name: chown
         run: sudo chown mysql:mysql /tmp/mysql.sock
@@ -39,8 +30,9 @@ jobs:
       - name: check mysql 1
         run: ps ax | grep mysqld
 
+      - name: check mysql 3
+        run: mysqladmin -uroot -ppassword --wait --count 10 ping || exit 1
+
       - name: check mysql 2
         run: mysql -h127.0.0.1 -P3306 -uroot -ppassword -Dhuga -e"SELECT '1'"
 
-      - name: check mysql 3
-        run: mysqladmin --wait --count 3 ping
