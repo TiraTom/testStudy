@@ -24,8 +24,17 @@ jobs:
       - name: wait
         run: sleep 10
 
-      - name: hoge
+      - name: ls 1
         run: sudo ls /tmp
+
+      - name: touch
+        run: sudo touch /tmp/mysql.sock
+
+      - name: ls 2
+        run: sudo ls -l /tmp
+
+      - name: chown
+        run: sudo chown mysql:mysql /tmp/mysql.sock
 
       - name: check mysql 1
         run: ps ax | grep mysqld
