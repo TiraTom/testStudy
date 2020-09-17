@@ -34,7 +34,7 @@ jobs:
         run: sudo chown mysql:mysql /var/run/mysqld/mysqld.sock
 
       - name: chmod
-        run: sudo chmod 774 mysql:mysql /var/run/mysqld/mysqld.sock
+        run: sudo chmod 774 /var/run/mysqld/mysqld.sock
 
       - name: ping mysql 2
         run: echo $(mysqladmin -uroot -ppassword ping)
@@ -50,5 +50,8 @@ jobs:
 
       - name: check mysql 2
         run: mysql -h127.0.0.1 -P3306 -uroot -ppassword -Dhuga -e"SELECT '1'"
+
+      - name: ping mysql 4
+        run: echo $(mysqladmin -uroot -ppassword ping)
 
 
