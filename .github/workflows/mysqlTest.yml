@@ -1,5 +1,5 @@
 name: MySQL Test
-on: pull_request
+on: push
 jobs:
   mysql_test:
     timeout-minutes: 5
