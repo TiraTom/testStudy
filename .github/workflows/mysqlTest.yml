@@ -33,6 +33,9 @@ jobs:
       - name: chown
         run: sudo chown mysql:mysql /var/run/mysqld/mysqld.sock
 
+      - name: chmod
+        run: sudo chmod 774 mysql:mysql /var/run/mysqld/mysqld.sock
+
       - name: ping mysql 2
         run: echo $(mysqladmin -uroot -ppassword ping)
 
@@ -40,7 +43,7 @@ jobs:
       #        run: ps ax | grep mysqld
       #
       - name: aaa
-        run: wait 10
+        run: sleep 10
 
       - name: ping mysql 3
         run: echo $(mysqladmin -uroot -ppassword ping)
