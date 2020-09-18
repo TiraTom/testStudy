@@ -42,16 +42,28 @@ jobs:
         #      - name: aaa
         #        run: sleep 10
 
+      - name: ls mysql 1
+        run: sudo ls -l /var/lib/mysql/
+
+      - name: sleep 5sec
+        run: sleep 5
+
+      - name: ls mysql 2
+        run: sudo ls -l /var/lib/mysql/
+
+      - name: ping mysql 3
+        run: echo $(mysqladmin -h127.0.0.1 -uroot -ppassword ping)
+
       - name: ping retry
         run: $(for i in 1 2 3 4 5; do sudo mysqladmin -h127.0.0.1 -uroot -ppassword ping && break || sleep 5 && [ 5 -eq $i ] && exit 1 ; done)
 
-      - name: ping mysql 3
+      - name: ping mysql 4
         run: echo $(mysqladmin -h127.0.0.1 -uroot -ppassword ping)
 
       - name: check mysql 2
         run: mysql -h127.0.0.1 -P3306 -uroot -ppassword -Dhuga -e"SELECT '1'"
 
-      - name: ping mysql 4
+      - name: ping mysql 5
         run: echo $(mysqladmin -h127.0.0.1 -uroot -ppassword ping)
 
 
