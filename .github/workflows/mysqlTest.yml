@@ -21,29 +21,29 @@ jobs:
           mysql database: 'huga'
           mysql root password: 'password'
 
-      - name: ping mysql 1
-        run: echo $(mysqladmin -uroot -ppassword ping)
-
-      - name: mkdir
-        run: sudo mkdir -p /var/run/mysqld
-
-      - name: touch
-        run: sudo touch /var/run/mysqld/mysqld.sock
-
-      - name: chown
-        run: sudo chown mysql:mysql /var/run/mysqld/mysqld.sock
-
-      - name: chmod
-        run: sudo chmod 774 /var/run/mysqld/mysqld.sock
+      #      - name: mkdir
+      #        run: sudo mkdir -p /var/run/mysqld
+      #
+      #      - name: touch
+      #        run: sudo touch /var/run/mysqld/mysqld.sock
+      #
+      #      - name: chown
+      #        run: sudo chown mysql:mysql /var/run/mysqld/mysqld.sock
+      #
+      #      - name: chmod
+      #        run: sudo chmod 774 /var/run/mysqld/mysqld.sock
 
       - name: ping mysql 2
         run: echo $(mysqladmin -h127.0.0.1 -uroot -ppassword ping)
 
-      #      - name: check mysql 1
-      #        run: ps ax | grep mysqld
-      #
-      - name: aaa
-        run: sleep 10
+        #      - name: check mysql 1
+        #        run: ps ax | grep mysqld
+        #
+        #      - name: aaa
+        #        run: sleep 10
+
+      - name: ping retry
+        run: for i in 1 2 3 4 5; do mysqladmin -h127.0.0.1 -uroot -ppassword ping && break || sleep 5 && [ 5 -eq $i ] && exit 1; ; done
 
       - name: ping mysql 3
         run: echo $(mysqladmin -h127.0.0.1 -uroot -ppassword ping)
