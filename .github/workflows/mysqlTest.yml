@@ -43,7 +43,7 @@ jobs:
         #        run: sleep 10
 
       - name: ping retry
-        run: $(for i in 1 2 3 4 5; do mysqladmin -h127.0.0.1 -uroot -ppassword ping && break || sleep 5 && [ 5 -eq $i ] && exit 1 ; done)
+        run: $(for i in 1 2 3 4 5; do sudo mysqladmin -h127.0.0.1 -uroot -ppassword ping && break || sleep 5 && [ 5 -eq $i ] && exit 1 ; done)
 
       - name: ping mysql 3
         run: echo $(mysqladmin -h127.0.0.1 -uroot -ppassword ping)
