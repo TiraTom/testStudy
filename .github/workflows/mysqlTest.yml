@@ -21,20 +21,20 @@ jobs:
           mysql database: 'huga'
           mysql root password: 'password'
 
-      #      - name: mkdir
-      #        run: sudo mkdir -p /var/run/mysqld
-      #
-      #      - name: touch
-      #        run: sudo touch /var/run/mysqld/mysqld.sock
-      #
-      #      - name: chown
-      #        run: sudo chown mysql:mysql /var/run/mysqld/mysqld.sock
-      #
-      #      - name: chmod
-      #        run: sudo chmod 774 /var/run/mysqld/mysqld.sock
+        #      - name: mkdir
+        #        run: sudo mkdir -p /var/run/mysqld
+        #
+        #      - name: touch
+        #        run: sudo touch /var/run/mysqld/mysqld.sock
+        #
+        #      - name: chown
+        #        run: sudo chown mysql:mysql /var/run/mysqld/mysqld.sock
+        #
+        #      - name: chmod
+        #        run: sudo chmod 774 /var/run/mysqld/mysqld.sock
 
-      - name: ping mysql 2
-        run: echo $(mysqladmin -h127.0.0.1 -uroot -ppassword ping)
+        #      - name: ping mysql 2
+        #        run: echo $(mysqladmin -h127.0.0.1 -uroot -ppassword ping)
 
         #      - name: check mysql 1
         #        run: ps ax | grep mysqld
@@ -42,11 +42,11 @@ jobs:
         #      - name: aaa
         #        run: sleep 10
 
-      - name: ls mysql 1
-        run: sudo ls -l /var/lib/mysql/
-
+      #      - name: ls mysql 1
+      #        run: sudo ls -l /var/lib/
+      #
       - name: sleep 5sec
-        run: sleep 5
+        run: sleep 10
 
       - name: ls mysql 2
         run: sudo ls -l /var/lib/mysql/
