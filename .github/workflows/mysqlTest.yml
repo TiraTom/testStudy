@@ -46,7 +46,7 @@ jobs:
       #        run: sudo ls -l /var/lib/
       #
       - name: sleep 5sec
-        run: sleep 10
+        run: sleep 15
 
       - name: ls mysql 2
         run: sudo ls -l /var/lib/mysql/
